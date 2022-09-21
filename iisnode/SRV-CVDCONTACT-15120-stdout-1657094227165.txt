@@ -1,0 +1,47 @@
+listening to PORT \\.\pipe\5db11156-5233-41da-9a5a-b7dc9077be9d ...
+MongooseError: Operation `articles.countDocuments()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:198:23)
+    at listOnTimeout (node:internal/timers:557:17)
+    at processTimers (node:internal/timers:500:7)
+Error
+    at newError (C:\Users\tboughnam\Desktop\PNSM_DP\util\error.js:3:15)
+    at Object.getArticles (C:\Users\tboughnam\Desktop\PNSM_DP\data\article.js:29:9)
+    at runNextTicks (node:internal/process/task_queues:61:5)
+    at listOnTimeout (node:internal/timers:526:9)
+    at processTimers (node:internal/timers:500:7)
+    at async landingPage (C:\Users\tboughnam\Desktop\PNSM_DP\handler\index.js:24:19) {
+  error: "quelque chose s'est mal passé",
+  code: 500
+}
+MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+    at NativeConnection.Connection.openUri (C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\connection.js:846:32)
+    at C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\index.js:351:10
+    at C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\index.js:1149:10)
+    at Mongoose.connect (C:\Users\tboughnam\Desktop\PNSM_DP\node_modules\mongoose\lib\index.js:350:20)
+    at Object.<anonymous> (C:\Users\tboughnam\Desktop\PNSM_DP\db.js:7:10)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (C:\Users\tboughnam\Desktop\PNSM_DP\app.js:13:1)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14) {
+  reason: TopologyDescription {
+    type: 'Single',
+    setName: null,
+    maxSetVersion: null,
+    maxElectionId: null,
+    servers: Map(1) { 'localhost:27017' => [ServerDescription] },
+    stale: false,
+    compatible: true,
+    compatibilityError: null,
+    logicalSessionTimeoutMinutes: null,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    commonWireVersion: null
+  }
+}

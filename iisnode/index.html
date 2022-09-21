@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"SRV-CVDCONTACT-10344-stderr-1657071920368.txt","computername":"SRV-CVDCONTACT","pid":10344,"type":"stderr","created":1657071920368},{"file":"SRV-CVDCONTACT-10344-stdout-1657071920364.txt","computername":"SRV-CVDCONTACT","pid":10344,"type":"stdout","created":1657071920364},{"file":"SRV-CVDCONTACT-12672-stderr-1657092225071.txt","computername":"SRV-CVDCONTACT","pid":12672,"type":"stderr","created":1657092225071},{"file":"SRV-CVDCONTACT-12672-stdout-1657092225068.txt","computername":"SRV-CVDCONTACT","pid":12672,"type":"stdout","created":1657092225068},{"file":"SRV-CVDCONTACT-14620-stderr-1657086249808.txt","computername":"SRV-CVDCONTACT","pid":14620,"type":"stderr","created":1657086249808},{"file":"SRV-CVDCONTACT-14620-stdout-1657086249804.txt","computername":"SRV-CVDCONTACT","pid":14620,"type":"stdout","created":1657086249804},{"file":"SRV-CVDCONTACT-15120-stderr-1657094227169.txt","computername":"SRV-CVDCONTACT","pid":15120,"type":"stderr","created":1657094227169},{"file":"SRV-CVDCONTACT-15120-stdout-1657094227165.txt","computername":"SRV-CVDCONTACT","pid":15120,"type":"stdout","created":1657094227165},{"file":"SRV-CVDCONTACT-17428-stderr-1657067849640.txt","computername":"SRV-CVDCONTACT","pid":17428,"type":"stderr","created":1657067849640},{"file":"SRV-CVDCONTACT-17428-stdout-1657067849636.txt","computername":"SRV-CVDCONTACT","pid":17428,"type":"stdout","created":1657067849636},{"file":"SRV-CVDCONTACT-20884-stderr-1657106961755.txt","computername":"SRV-CVDCONTACT","pid":20884,"type":"stderr","created":1657106961755},{"file":"SRV-CVDCONTACT-20884-stdout-1657106961751.txt","computername":"SRV-CVDCONTACT","pid":20884,"type":"stdout","created":1657106961751},{"file":"SRV-CVDCONTACT-21364-stderr-1657088026587.txt","computername":"SRV-CVDCONTACT","pid":21364,"type":"stderr","created":1657088026587},{"file":"SRV-CVDCONTACT-21364-stdout-1657088026584.txt","computername":"SRV-CVDCONTACT","pid":21364,"type":"stdout","created":1657088026584},{"file":"SRV-CVDCONTACT-6332-stderr-1657109284612.txt","computername":"SRV-CVDCONTACT","pid":6332,"type":"stderr","created":1657109284612},{"file":"SRV-CVDCONTACT-6332-stdout-1657109284608.txt","computername":"SRV-CVDCONTACT","pid":6332,"type":"stdout","created":1657109284608},{"file":"SRV-CVDCONTACT-7812-stderr-1657101807088.txt","computername":"SRV-CVDCONTACT","pid":7812,"type":"stderr","created":1657101807088},{"file":"SRV-CVDCONTACT-7812-stdout-1657101807085.txt","computername":"SRV-CVDCONTACT","pid":7812,"type":"stdout","created":1657101807085},{"file":"SRV-CVDCONTACT-8756-stderr-1657100375099.txt","computername":"SRV-CVDCONTACT","pid":8756,"type":"stderr","created":1657100375099},{"file":"SRV-CVDCONTACT-8756-stdout-1657100375095.txt","computername":"SRV-CVDCONTACT","pid":8756,"type":"stdout","created":1657100375095},{"file":"SRV-CVDCONTACT-9588-stderr-1657065703627.txt","computername":"SRV-CVDCONTACT","pid":9588,"type":"stderr","created":1657065703627},{"file":"SRV-CVDCONTACT-9588-stdout-1657065703623.txt","computername":"SRV-CVDCONTACT","pid":9588,"type":"stdout","created":1657065703623}];
+        var lastUpdated = 1657109285522;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

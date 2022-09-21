@@ -1,0 +1,110 @@
+extends profile
+
+block tail
+	//- LIBRARY
+	script(src='/../js/central/jquery-jvectormap-2.0.5.min.js')
+	script(src='/../js/central/toggleMap.js')
+	//- MAP
+	script(src='/../js/central/region/map.js')
+	script(src='/../js/central/province/map.js')
+	//- CARTE
+	script(src='/../js/central/region/carte/planAction.js')
+	script(src='/../js/central/province/carte/planAction.js')
+	//- CHART
+	script(src='/../js/central/region/chart/planAction.js')
+	script(src='/../js/central/province/chart/planAction.js') 
+
+block main
+	-var timeRemaining = ((30 - today.getDate())< 0) ? 0 : 30 - today.getDate() 
+	.row.g-3
+		.col-12
+			include ../util/snippet/titleChangeData
+		.col-12
+			.card.card-body
+				form(action=url method="post") 
+					//- .row.g-3
+					//- 	.col-12
+					//- 		.d-flex.align-items-center.mb-2
+					//- 			.d-flex.align-items-center.me-2
+					//- 				<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+					//- 				.badge.p-0.text-dark.fs-7 Information de selection
+					//- 			hr.my-1.w-100
+							//- .row.g-3
+							//- 	.col-md-6
+							//- 		label.form-label.fs-7.text-dark Veuillez saisir la region
+							//- 		.input-group.input-group-sm
+							//- 			input.form-control(type='number' name='date' placeholder='Veuillez saisir nombre des jour ajouter' aria-label='date' required)
+							//- 			.invalid-feedback.fs-8.mt-4
+							//- 	.col-md-6
+							//- 		label.form-label.fs-7.text-dark Veuillez saisir le province
+							//- 		.input-group.input-group-sm
+							//- 			input.form-control(type='number' name='date' placeholder='Veuillez saisir nombre des jour ajouter' aria-label='date' required)
+							//- 			.invalid-feedback.fs-8.mt-4
+							//- .row.g-3
+							//- 	.col-md-6
+							//- 		label.form-label.fs-7.text-dark Veuillez saisir l'annee
+							//- 		.input-group.input-group-sm
+							//- 			input.form-control(type='number' name='anner' placeholder='Veuillez saisir nombre des jour ajouter' aria-label='date' required)
+							//- 			.invalid-feedback.fs-8.mt-4
+							//- 	.col-md-6
+							//- 		label.form-label.fs-7.text-dark Veuillez saisir le moi
+							//- 		.input-group.input-group-sm
+							//- 			input.form-control(type='number' name='moi' placeholder='Veuillez saisir nombre des jour ajouter' aria-label='date' required)
+							//- 			.invalid-feedback.fs-8.mt-4
+			.card.card-body 
+					.row.g-3
+						.col-12
+							.d-flex.align-items-center.mb-2
+								.d-flex.align-items-center.me-2
+									<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+									.badge.p-0.text-dark.fs-7 Tableau des donnees
+								hr.my-1.w-100
+						.col-md
+							table.table.table-bordered
+									thead
+										tr
+											th 
+											th Taux d'evolution d'emission des PA
+											th Taux de remplissage du plan d'action 
+											th Taux de remplissage des rapports d'activites
+									tbody
+										tr
+											td Chiffre cle
+											td 15
+											td 2
+											td 0
+			.card.card-body 
+					.row.g-3
+						.col-12
+							.d-flex.align-items-center.mb-2
+								.d-flex.align-items-center.me-2
+									<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+									.badge.p-0.text-dark.fs-7 Observation generale
+								hr.my-1.w-100
+								br
+					.row.g-3
+						.col-md-6
+							table.table.table-bordered
+								thead
+									tr
+										th Taux de remplissage du plan d'action
+								tbody
+									tr
+										td 
+											.col-12.thisRegion
+												#dataRegion(data-carte=JSON.stringify(data.carte.region) data-planAction=JSON.stringify(data.planAction.region))
+												#region-chart(data-region=JSON.stringify(region))
+						.col-md-6
+							table.table.table-bordered
+								thead
+									tr
+										th Taux de remplissage des rapports d'activites
+								tbody
+									tr
+										td 
+											.col-12.thisRegion
+												#dataProvince(data-carte=JSON.stringify(data.carte.province) data-rapport=JSON.stringify(data2.rapport.province) data-trimestre=1)
+												#province-chart(data-province=JSON.stringify(province))
+							
+						
+								

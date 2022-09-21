@@ -1,0 +1,68 @@
+{
+    "tab" : {
+        "dataType": "array",
+        "title": "Information de selection",
+        "data": [
+            {
+				"name": "reg",
+				"id": "regVal",
+                "title": "Veuillez saisir la region",
+                "type": "text",
+                "col": "col-12",
+                "select": true,
+                "data": [
+                    "Choisissez une option",
+                    "Goudron",
+                    "Piste",
+                    "Toufna",
+                    "Mixte"
+                ]
+            },
+			{
+				"name": "prv",
+				"id": "prvVal",
+                "title": "Veuillez saisir le province",
+                "type": "text",
+                "col": "col-12",
+                "select": true,
+                "data": [
+                    "Choisissez une option",
+                    "Goudron",
+                    "Piste",
+                    "Toufna",
+                    "Mixte"
+                ]
+            },
+            {
+				"name": "ann",
+				"id": "annVal",
+                "title": "Veuillez saisir l'annee",
+                "type": "text",
+                "col": "col-12",
+                "select": true,
+                "data": [
+                    "Choisissez une option",
+                    "Goudron",
+                    "Piste",
+                    "Toufna",
+                    "Mixte"
+                ]
+            },
+            {
+				"name": "moi",
+				"id": "moiVal",
+                "title": "Veuillez saisir le moi",
+                "type": "text",
+                "col": "col-12",
+                "select": true,
+                "data": [
+                    "Choisissez une option",
+                    "Goudron",
+                    "Piste",
+                    "Toufna",
+                    "Mixte"
+                ]
+            }
+        ]
+    }
+}

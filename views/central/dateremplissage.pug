@@ -1,0 +1,49 @@
+extends profile
+
+block main
+	-var timeRemaining = ((30 - today.getDate())< 0) ? 0 : 30 - today.getDate() 
+	.row.g-3
+		.col-12
+			include ../util/snippet/titleDateRemplissage
+		.col-12
+			.card.card-body
+				form(action=url method="post") 
+					.row.g-3
+						.col-12
+							.d-flex.align-items-center.mb-2
+								.d-flex.align-items-center.me-2
+									<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+									.badge.p-0.text-dark.fs-7 Date Ancien
+								hr.my-1.w-100
+							.row.g-3
+								.col-12
+									.card.bg-body.p-2
+										.d-flex.align-items-center
+											<ion-icon class="text-dark fs-6 me-2" name="information-circle-outline"></ion-icon>
+											span.fs-7= (data.document.adddate + timeRemaining)+' jour'
+						.col-12
+							.d-flex.align-items-center.mb-2
+								.d-flex.align-items-center.me-2
+									<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+									.badge.p-0.text-dark.fs-7 Nombre Des Jours Ajouter
+								hr.my-1.w-100
+							.row.g-3
+								.col-12
+									.card.bg-body.p-2
+										.d-flex.align-items-center
+											<ion-icon class="text-dark fs-6 me-2" name="information-circle-outline"></ion-icon>
+											span.fs-7= data.document.adddate +' jour'
+						.col-12
+							.d-flex.align-items-center.mb-2
+								.d-flex.align-items-center.me-2
+									<ion-icon name="ellipse" class="text-1 me-1 fs-9"></ion-icon>
+									.badge.p-0.text-dark.fs-7 Nouveau Date
+								hr.my-1.w-100
+							.row.g-3
+								.col-md-6
+									label.form-label.fs-7.text-dark Veuillez saisir nombre des jour ajouter
+									.input-group.input-group-sm
+										input.form-control(type='number' name='date' placeholder='Veuillez saisir nombre des jour ajouter' aria-label='date' required)
+										.invalid-feedback.fs-8.mt-4
+						.col-12
+							button.btn.bg-grd.text-white.btn-sm(type="submit") changer la date
